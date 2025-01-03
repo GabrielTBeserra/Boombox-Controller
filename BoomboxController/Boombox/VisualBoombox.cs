@@ -13,8 +13,9 @@ namespace BoomboxController
     {
         private static VisualBoombox _instance;
 
-        public Coroutine Start(IEnumerator routine)
+        public Coroutine StartCustomCoroutine(IEnumerator routine)
         {
+          
             if (_instance == null)
             {
                 _instance = new GameObject("VisualBoombox").AddComponent<VisualBoombox>();

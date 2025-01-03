@@ -30,16 +30,15 @@ namespace BoomboxController
 
         public void WriteLogo()
         {
-            Logger.LogInfo($"\n" +
-                     $"                                                                                                                                                                  \n" +
-                     $"`7MM\"\"\"Yp,                                   *MM                                 .g8\"\"\"bgd                  mm                   `7MM `7MM                  \n" +
-                     $"  MM    Yb                                    MM                               .dP'     `M                  MM                     MM   MM                  \n" +
-                     $"  MM    dP  ,pW\"Wq.   ,pW\"Wq.`7MMpMMMb.pMMMb. MM,dMMb.   ,pW\"Wq.`7M'   `MF'    dM'       `,pW\"Wq.`7MMpMMMbmmMMmm `7Mb,od8 ,pW\"Wq.  MM   MM  .gP\"Ya `7Mb,od8 \n" +
-                     $"  MM\"\"\"bg. 6W'   `Wb 6W'   `Wb MM    MM    MM MM    `Mb 6W'   `Wb `VA ,V'      MM        6W'   `Wb MM    MM MM     MM' \"'6W'   `Wb MM   MM ,M'   Yb  MM' \"' \n" +
-                     $"  MM    `Y 8M     M8 8M     M8 MM    MM    MM MM     M8 8M     M8   XMX        MM.       8M     M8 MM    MM MM     MM    8M     M8 MM   MM 8M\"\"\"\"\"\"  MM     \n" +
-                     $"  MM    ,9 YA.   ,A9 YA.   ,A9 MM    MM    MM MM.   ,M9 YA.   ,A9 ,V' VA.      `Mb.     ,YA.   ,A9 MM    MM MM     MM    YA.   ,A9 MM   MM YM.    ,  MM     \n" +
-                     $".JMMmmmd9   `Ybmd9'   `Ybmd9'.JMML  JMML  JMMLP^YbmdP'   `Ybmd9'.AM.   .MA.      `\"bmmmd' `Ybmd9'.JMML  JMML`Mbmo.JMML.   `Ybmd9'.JMML.JMML.`Mbmmd'.JMML.   \n" +
-                     $"                                                                                                                                                                  ");
+            string asciiArt = @"
+            _________        .__               ________          ____ ___                       
+            \_   ___ \_____  |__|__  ________  \______ \   ____ |    |   \_______  __________  
+            /    \  \/\__  \ |  \  \/  /\__  \  |    |  \ /  _ \|    |   /\_  __ \/  ___/  _ \ 
+            \     \____/ __ \|  |>    <  / __ \_|    `   (  <_> )    |  /  |  | \/\___ (  <_> )
+             \______  (____  /__/__/\_ \(____  /_______  /\____/|______/   |__|  /____  >____/ 
+                    \/     \/         \/     \/        \/                             \/       
+            ";
+            Logger.LogInfo(asciiArt);
         }
 
         public void Startup()

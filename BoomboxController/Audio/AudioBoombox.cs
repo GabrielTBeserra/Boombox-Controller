@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using UnityEngine.Networking;
 using UnityEngine;
-using System.IO;
-using BepInEx;
-using System.Drawing.Design;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using UnityEngine.UIElements;
-using System.Threading;
+using UnityEngine.Networking;
 
 namespace BoomboxController.Audio
 {
@@ -23,7 +14,7 @@ namespace BoomboxController.Audio
 
         public List<AudioClip> audioclipsplay = new List<AudioClip>();
 
-        public Coroutine Start(IEnumerator routine)
+        public Coroutine StartCustomCoroutine(IEnumerator routine)
         {
             if (_instance == null)
             {
@@ -74,7 +65,6 @@ namespace BoomboxController.Audio
                 {
                     AudioClip myClip = DownloadHandlerAudioClip.GetContent(www);
                     audioclipsplay.Add(myClip);
-                    //Plugin.instance.Log(url);
                 }
             }
         }

@@ -1,18 +1,12 @@
 ﻿using BepInEx;
 using BoomboxController.Audio;
-using BoomboxController.Save;
 using HarmonyLib;
 using System;
-using System.Collections.Generic;
-using System.Drawing.Design;
+using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 using UnityEngine;
-using System.IO;
+using UnityEngine.InputSystem;
 using Cache = BoomboxController.Save.Cache;
 
 namespace BoomboxController.Boombox
@@ -46,7 +40,7 @@ namespace BoomboxController.Boombox
                     {
                         if (image.Width > 500)
                         {
-                            vbom.Start(vbom.GetTexture(@"file:///" + Paths.GameRootPath + @$"\BoomboxController\back.jpg", __instance));
+                            vbom.StartCustomCoroutine(vbom.GetTexture(@"file:///" + Paths.GameRootPath + @$"\BoomboxController\back.jpg", __instance));
                         }
                     }
                 }
@@ -75,39 +69,49 @@ namespace BoomboxController.Boombox
         [HarmonyPrefix]
         private static bool StartMusic_BoomboxItem(BoomboxItem __instance, bool startMusic, bool pitchDown, ref int ___timesPlayedWithoutTurningOff)
         {
-            if (!LoadingMusicBoombox)
+            try
             {
-                Plugin.instance.Log(startMusic + " startmusic");
-                if (startMusic)
+                if (!LoadingMusicBoombox)
                 {
-                    if (!currentTrackChange)
+                    Plugin.instance.Log(startMusic + " startmusic");
+
+                    if (startMusic)
                     {
-                        currectTrack = UnityEngine.Random.Range(0, totalTack - 1);
+                        if(musicList == null || !musicList.Any())
+                        {
+                            BoomboxController.DrawString(HUDManager.Instance, "Não foi definido uma musica para tocar", "Boombox", "Boombox");
+                            return false;
+                        }
+
+                        if (!currentTrackChange)
+                        {
+                            currectTrack = UnityEngine.Random.Range(0, totalTack - 1);
+                        }
+
+                        boomboxItem.boomboxAudio.clip = musicList[currectTrack];
+                        boomboxItem.boomboxAudio.pitch = 1f;
+                        boomboxItem.boomboxAudio.Play();
+                        boomboxItem.isPlayingMusic = startMusic;
+                        boomboxItem.isBeingUsed = startMusic;
+                        startMusics = false;
                     }
-                    boomboxItem.boomboxAudio.clip = musicList[currectTrack];
-                    boomboxItem.boomboxAudio.pitch = 1f;
-                    boomboxItem.boomboxAudio.Play();
-                    boomboxItem.isPlayingMusic = startMusic;
-                    boomboxItem.isBeingUsed = startMusic;
-                    startMusics = false;
-                }
-                else if (boomboxItem.isPlayingMusic)
-                {
-                    boomboxItem.boomboxAudio.Stop();
-                    boomboxItem.boomboxAudio.PlayOneShot(boomboxItem.stopAudios[UnityEngine.Random.Range(0, boomboxItem.stopAudios.Length)]);
-                    timesPlayedWithoutTurningOff = 0;
-                    boomboxItem.isPlayingMusic = startMusic;
-                    boomboxItem.isBeingUsed = startMusic;
-                    startMusics = true;
-                    currentTrackChange = false;
+                    else if (boomboxItem.isPlayingMusic)
+                    {
+                        boomboxItem.boomboxAudio.Stop();
+                        boomboxItem.boomboxAudio.PlayOneShot(boomboxItem.stopAudios[UnityEngine.Random.Range(0, boomboxItem.stopAudios.Length)]);
+                        timesPlayedWithoutTurningOff = 0;
+                        boomboxItem.isPlayingMusic = startMusic;
+                        boomboxItem.isBeingUsed = startMusic;
+                        startMusics = true;
+                        currentTrackChange = false;
+                    }
                 }
             }
-            //else
-            //{
-            //    boomboxItem.isBeingUsed = false;
-            //    boomboxItem.UseItemOnClient();
-            //    //DrawString(HUDManager.Instance, Plugin.config.GetLang().main_3.Value, "Boombox", "Boombox");
-            //}
+            catch (Exception ex)
+            {
+                Plugin.instance.Log(ex.StackTrace);
+            }
+           
             return false;
         }
 

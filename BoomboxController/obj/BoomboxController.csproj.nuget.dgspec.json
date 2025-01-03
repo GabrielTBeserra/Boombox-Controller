@@ -1,38 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "F:\\source\\repos\\BoomboxController\\BoomboxController\\BoomboxController.csproj": {}
+    "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Boombox-Controller\\BoomboxController\\BoomboxController.csproj": {}
   },
   "projects": {
-    "F:\\source\\repos\\BoomboxController\\BoomboxController\\BoomboxController.csproj": {
+    "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Boombox-Controller\\BoomboxController\\BoomboxController.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\source\\repos\\BoomboxController\\BoomboxController\\BoomboxController.csproj",
+        "projectUniqueName": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Boombox-Controller\\BoomboxController\\BoomboxController.csproj",
         "projectName": "BoomboxController",
-        "projectPath": "F:\\source\\repos\\BoomboxController\\BoomboxController\\BoomboxController.csproj",
-        "packagesPath": "C:\\Users\\uihuk\\.nuget\\packages\\",
-        "outputPath": "F:\\source\\repos\\BoomboxController\\BoomboxController\\obj\\",
+        "projectPath": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Boombox-Controller\\BoomboxController\\BoomboxController.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Boombox-Controller\\BoomboxController\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "F:\\Visual Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\uihuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net46"
+          "net48"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.bepinex.dev/v3/index.json": {}
+          "C:\\Users\\gabri\\Downloads\\BepInEx_win_x64_5.4.23.2\\BepInEx": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net46": {
-            "targetAlias": "net46",
+          "net48": {
+            "targetAlias": "net48",
             "projectReferences": {}
           }
         },
@@ -40,25 +39,18 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
-        "net46": {
-          "targetAlias": "net46",
+        "net48": {
+          "targetAlias": "net48",
           "dependencies": {
-            "BepInEx.Analyzers": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[1.0.8, )"
-            },
-            "BepInEx.Core": {
-              "target": "Package",
-              "version": "[5.*, )"
-            },
-            "BepInEx.PluginInfoProps": {
-              "target": "Package",
-              "version": "[2.1.0, )"
-            },
             "MediaToolkit": {
               "target": "Package",
               "version": "[1.1.0.1, )"
@@ -73,12 +65,13 @@
               "version": "[4.3.0, )"
             },
             "UnityEngine.Modules": {
-              "include": "Compile",
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[2022.3.9, )"
+              "version": "[2021.3.33, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
